@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
+</head>
+<body>
+    <form method="post">
+        <input type="text" name="num1" placeholder="Enter a number">
+        <br>
+        <input type="text" name="num2" placeholder="Enter another number">
+        <br>
+        <select name="operator">
+            <option value="add">+</option>
+            <option value="subtract">-</option>
+            <option value="multiply">*</option>
+            <option value="divide">/</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Calculate">
+    </form>
+    <button type="button" value="Spin" onclick="spin()" id="spin-button">Spin</button>
+    <br>
+    <label>Result:</label>
+    <br>
+    <div class="result">
+        <label class="result">{{result}}</label>
+    </div>
+    <script>
+        function spin() {
+            var button = document.getElementById("spin-button");
+            var body = document.getElementsByTagName("body")[0];
+            button.classList.toggle("spin-button");
+            body.classList.toggle("dark-theme");
+        }
+    </script>
+</body>
+</html>

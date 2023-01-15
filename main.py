@@ -1,8 +1,5 @@
-from flask import Flask, request
-from flask import Flask, request, render_template, send_from_directory
-app = Flask(__name__, static_folder='.', static_url_path='')
-
-#app = Flask(__name__)
+from flask import Flask, request, render_template
+app = Flask(__name__,template_folder='templates',static_folder='static')
 
 @app.route('/calculate', methods=['GET', 'POST'])
 def calculate():
@@ -23,60 +20,10 @@ def calculate():
             result = num1 / num2
         else:
             return 'Invalid operator'
+        return render_template('template.html', result=result)
 
-        return '''
-        <html>
-            <head>
-                <link rel="stylesheet" type="text/css" href="styles.css"></link>
-            </head>
-            <body>
-                <form method="post">
-                    <input type="text" name="num1" placeholder="Enter a number">
-                    <br>
-                    <input type="text" name="num2" placeholder="Enter another number">
-                    <br>
-                    <select name="operator">
-                        <option value="add">+</option>
-                        <option value="subtract">-</option>
-                        <option value="multiply">*</option>
-                        <option value="divide">/</option>
-                    </select>
-                    <br><br>
-                    <input type="submit" value="Calculate">
-                </form>
-                <br>
-                <label>Result:</label>
-                <br>
-                <div class="result">
-                    <label class="result">'''+ str(result) + '''</label>
-                </div>
-            </body>
-        </html>
-           '''
     else:
-        return '''
-            <html>
-                <head>
-                    <link rel="stylesheet" type="text/css" href="styles.css"></link>
-                </head>
-                <body>
-                    <form method="post">
-                        <input type="text" name="num1" placeholder="Enter a number">
-                        <br>
-                        <input type="text" name="num2" placeholder="Enter another number">
-                        <br>
-                        <select name="operator">
-                            <option value="add">+</option>
-                            <option value="subtract">-</option>
-                            <option value="multiply">*</option>
-                            <option value="divide">/</option>
-                        </select>
-                        <br><br>
-                        <input type="submit" value="Calculate">
-                    </form>
-                </body>
-            </html>
-        '''
+        return render_template('template.html')
 
 if __name__ == '__main__':
     app.run()

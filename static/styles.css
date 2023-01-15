@@ -51,3 +51,17 @@ input[type=submit]:hover {
     text-align: center; /* center the text */
     font-size: 36px; /* make the text larger */
 }
+
+.spin-button {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
