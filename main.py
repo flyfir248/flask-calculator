@@ -47,7 +47,9 @@ def calculate():
                 <br>
                 <label>Result:</label>
                 <br>
-                <label class="result">'''+ str(result) + '''</label>
+                <div class="result">
+                    <label class="result">'''+ str(result) + '''</label>
+                </div>
             </body>
         </html>
            '''
